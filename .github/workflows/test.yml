@@ -1,0 +1,21 @@
+name: TEST
+
+on:
+  push: # Needed to run publish
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+    inputs: {}
+
+jobs:
+  test:
+    name: Orchestration
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Echo event name
+        run: |
+          echo ${{github.event_name}}
